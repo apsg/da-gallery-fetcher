@@ -20,6 +20,5 @@ class ExampleTest extends TestCase
         // when
 
         // then
-
     }
 }
