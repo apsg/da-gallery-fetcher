@@ -1,11 +1,11 @@
 <?php
 namespace Apsg\Dafetcher\Tests;
 
+use Apsg\Dafetcher\DafetcherServiceProvider;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Apsg\Dafetcher\DafetcherServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
         $this->app->bind(ClientInterface::class, Client::class);
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Apsg\\Dafetcher\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Apsg\\Dafetcher\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -31,9 +31,9 @@ class TestCase extends Orchestra
     {
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
 
         /*

@@ -1,9 +1,9 @@
 <?php
 namespace Apsg\Dafetcher;
 
-use Apsg\LaravelPackageTools\Package;
-use Apsg\LaravelPackageTools\PackageServiceProvider;
-use Apsg\Dafetcher\Commands\DafetcherCommand;
+use Apsg\Dafetcher\Commands\SkeletonCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class DafetcherServiceProvider extends PackageServiceProvider
 {

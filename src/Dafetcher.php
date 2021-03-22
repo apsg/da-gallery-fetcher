@@ -17,6 +17,5 @@ class Dafetcher
 
     public function fetch()
     {
-
     }
 }
