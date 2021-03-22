@@ -1,6 +1,6 @@
 {
     "name": "apsg/da-gallery-fetcher",
-    "description": ":package_description",
+    "description": "deviantArt Gallery fetcher",
     "keywords": [
         "apsg",
         "da-gallery-fetcher"
@@ -9,7 +9,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Gacek",
+            "name": "Szymon Gackowski",
             "email": "szymon@gackowski.edu.pl",
             "role": "Developer"
         }
@@ -53,7 +53,7 @@
                 "DafetcherServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "DafetcherFacade"
+                "Dafetcher": "DafetcherFacade"
             }
         }
     },

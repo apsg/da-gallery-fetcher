@@ -1,9 +1,9 @@
 <?php
 namespace Apsg\Dafetcher;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Apsg\Dafetcher\Commands\SkeletonCommand;
+use Apsg\LaravelPackageTools\Package;
+use Apsg\LaravelPackageTools\PackageServiceProvider;
+use Apsg\Dafetcher\Commands\DafetcherCommand;
 
 class DafetcherServiceProvider extends PackageServiceProvider
 {
@@ -17,6 +17,6 @@ class DafetcherServiceProvider extends PackageServiceProvider
         $package
             ->name('dafetcher')
             ->hasConfigFile()
-            ->hasCommand(SkeletonCommand::class);
+            ->hasCommand(DafetcherCommand::class);
     }
 }

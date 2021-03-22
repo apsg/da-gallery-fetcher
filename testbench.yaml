@@ -1,2 +1,2 @@
 providers:
-  - Apsg\Dafetcher\SkeletonServiceProvider
+  - Apsg\Dafetcher\DafetcherServiceProvider
