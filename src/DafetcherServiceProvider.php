@@ -1,7 +1,6 @@
 <?php
 namespace Apsg\Dafetcher;
 
-use Apsg\Dafetcher\Commands\SkeletonCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
