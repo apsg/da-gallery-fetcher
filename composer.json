@@ -1,23 +1,26 @@
 {
-    "name": ":vendor_name/:package_name",
+    "name": "apsg/da-gallery-fetcher",
     "description": ":package_description",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "apsg",
+        "da-gallery-fetcher"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/apsg/da-gallery-fetcher",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Gacek",
+            "email": "szymon@gackowski.edu.pl",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
-        "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^8.0"
+        "php": "^7.4",
+        "ext-xml": "*",
+        "guzzlehttp/guzzle": "^7.2",
+        "illuminate/contracts": "^8.0",
+        "laravel/framework": "^8.0",
+        "spatie/laravel-package-tools": "^1.4.3"
     },
     "require-dev": {
         "orchestra/testbench": "^6.13",
@@ -27,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Apsg\\Dafetcher\\": "src",
+            "Apsg\\Dafetcher\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Apsg\\Dafetcher\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +50,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "DafetcherServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Skeleton": "DafetcherFacade"
             }
         }
     },

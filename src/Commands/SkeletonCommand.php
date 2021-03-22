@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace Apsg\Dafetcher\Commands;
 
 use Illuminate\Console\Command;
 

@@ -1,26 +1,29 @@
 <?php
+namespace Apsg\Dafetcher\Tests;
 
-namespace Spatie\Skeleton\Tests;
-
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
+use Apsg\Dafetcher\DafetcherServiceProvider;
 
 class TestCase extends Orchestra
 {
-    public function setUp(): void
+    public function setUp() : void
     {
         parent::setUp();
+        $this->createApplication();
+        $this->app->bind(ClientInterface::class, Client::class);
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn(string $modelName) => 'Apsg\\Dafetcher\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            DafetcherServiceProvider::class,
         ];
     }
 
@@ -28,9 +31,9 @@ class TestCase extends Orchestra
     {
         $app['config']->set('database.default', 'sqlite');
         $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
-            'prefix' => '',
+            'prefix'   => '',
         ]);
 
         /*

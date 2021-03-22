@@ -64,11 +64,11 @@ for file in $files ; do
     echo "Updating file $file"
     temp_file="$file.temp"
     < "$file" \
-      sed "s/:author_name/$author_name/g" \
+      sed "s/Gacek/$author_name/g" \
     | sed "s/:author_username/$author_username/g" \
-    | sed "s/:author_email/$author_email/g" \
-    | sed "s/:vendor_name/$vendor_name_lowercase/g" \
-    | sed "s/:package_name/$package_name/g" \
+    | sed "s/szymon@gackowski.edu.pl/$author_email/g" \
+    | sed "s/apsg/$vendor_name_lowercase/g" \
+    | sed "s/da-gallery-fetcher/$package_name/g" \
     | sed "s/:short_package_name/$short_package_name/g" \
     | sed "s/Spatie/$vendor_name/g" \
     | sed "s/OriginalVendor/Spatie/g" \

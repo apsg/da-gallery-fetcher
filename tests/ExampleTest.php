@@ -1,6 +1,7 @@
 <?php
+namespace Apsg\Dafetcher\Tests;
 
-namespace Spatie\Skeleton\Tests;
+use Apsg\Dafetcher\Dafetcher;
 
 class ExampleTest extends TestCase
 {
@@ -8,5 +9,17 @@ class ExampleTest extends TestCase
     public function true_is_true()
     {
         $this->assertTrue(true);
+    }
+
+    /** @test */
+    public function facade_is_working()
+    {
+        // given
+        $this->app->make(Dafetcher::class)->fetch();
+
+        // when
+
+        // then
+
     }
 }
