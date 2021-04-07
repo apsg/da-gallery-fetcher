@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "ext-simplexml": "*",
         "ext-xml": "*",
         "guzzlehttp/guzzle": "^7.2",
@@ -53,10 +53,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "DafetcherServiceProvider"
+                "Apsg\\Dafetcher\\DafetcherServiceProvider"
             ],
             "aliases": {
-                "Dafetcher": "DafetcherFacade"
+                "Dafetcher": "Apsg\\Dafetcher\\DafetcherFacade"
             }
         }
     },
