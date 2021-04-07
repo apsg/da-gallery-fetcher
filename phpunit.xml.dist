@@ -36,9 +36,4 @@
     <logging>
         <junit outputFile="build/report.junit.xml"/>
     </logging>
-    <php>
-        <env name="DA_CLIENT_ID" value="15247"/>
-        <env name="DA_SECRET" value="2d9cc65251e07ad4d70d6c61ad138ae6"/>
-        <env name="DA_USERNAME" value="gacek"/>
-    </php>
 </phpunit>

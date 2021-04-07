@@ -14,6 +14,7 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Apsg\\Dafetcher\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
+
     }
 
     protected function getPackageProviders($app)
@@ -32,9 +33,6 @@ class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_da_gallery_fetcher_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+        $app->loadEnvironmentFrom(base_path('.env.testing'));
     }
 }
