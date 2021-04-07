@@ -15,7 +15,6 @@ class DafetcherServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('dafetcher')
-            ->hasConfigFile()
-            ->hasCommand(DafetcherCommand::class);
+            ->hasConfigFile();
     }
 }
