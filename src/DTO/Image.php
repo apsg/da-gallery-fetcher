@@ -22,6 +22,11 @@ class Image
         return object_get($this->data, 'title', '');
     }
 
+    public function timestamp() : int
+    {
+        return object_get($this->data, 'published_time', 0);
+    }
+
     public function authorAvatar() : string
     {
         return object_get($this->data, 'author.usericon', '');
