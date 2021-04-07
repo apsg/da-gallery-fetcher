@@ -1,6 +1,7 @@
 <?php
 namespace Apsg\Dafetcher;
 
+use Apsg\Dafetcher\DTO\Image;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
@@ -61,6 +62,14 @@ class Dafetcher
         ])->getBody()->getContents());
 
         return $this->filterResults(object_get($data, 'results', []));
+    }
+
+    /** @return array|Image[] */
+    public function fetchTransformed(int $page = 1) : array
+    {
+        return array_map(function ($item) {
+            return new Image($item);
+        }, $this->fetch($page));
     }
 
     protected function buildQuery(int $page)
