@@ -5,6 +5,8 @@ use Apsg\Dafetcher\DTO\Image;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Hash;
 use kamermans\OAuth2\GrantType\ClientCredentials;
 use kamermans\OAuth2\OAuth2Middleware;
 
@@ -17,6 +19,9 @@ class Dafetcher
         'apps',
     ];
 
+    const CACHE_PREFIX = 'dafetcher';
+    const CACHE_TTL = 604800; // 1 week
+
     /**
      * @var ClientInterface
      */
@@ -25,9 +30,13 @@ class Dafetcher
     /** @var string */
     protected $username;
 
+    /** @var boolean */
+    protected $shouldCache;
+
     public function __construct()
     {
         $this->username = config('dafetcher.username');
+        $this->shouldCache = config('dafetcher.cache');
 
         $reauth_client = new Client([
             'base_uri' => config('dafetcher.oauth.token_url'),
@@ -55,13 +64,26 @@ class Dafetcher
         return $this;
     }
 
+    public function noCache() : self
+    {
+        $this->shouldCache = false;
+
+        return $this;
+    }
+
     public function fetch(int $page = 1) : array
     {
-        $data = json_decode($this->client->get('https://www.deviantart.com/api/v1/oauth2/gallery/all', [
-            'query' => $this->buildQuery($page),
-        ])->getBody()->getContents());
+        if ($this->shouldCache) {
+            return Cache::remember(
+                static::CACHE_PREFIX . $this->hash($page),
+                static::CACHE_TTL,
+                function () use ($page) {
+                    return $this->fetchRaw($page);
+                }
+            );
+        }
 
-        return $this->filterResults(object_get($data, 'results', []));
+        return $this->fetchRaw($page);
     }
 
     /** @return array|Image[] */
@@ -70,6 +92,15 @@ class Dafetcher
         return array_map(function ($item) {
             return new Image($item);
         }, $this->fetch($page));
+    }
+
+    protected function fetchRaw(int $page)
+    {
+        $data = json_decode($this->client->get(static::GALLERY_URL, [
+            'query' => $this->buildQuery($page),
+        ])->getBody()->getContents());
+
+        return $this->filterResults(object_get($data, 'results', []));
     }
 
     protected function buildQuery(int $page)
@@ -86,5 +117,10 @@ class Dafetcher
         return array_filter($data, function ($item) {
             return !in_array($item->category_path, static::FILTER_OUT_CATEGORIES);
         });
+    }
+
+    protected function hash(int $page) : string
+    {
+        return Hash::make(json_encode($this->buildQuery($page)));
     }
 }

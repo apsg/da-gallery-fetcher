@@ -2,6 +2,7 @@
 
 return [
     'username' => env('DA_USERNAME'),
+    'cache'    => true,
 
     'oauth' => [
         'token_url' => 'https://www.deviantart.com/oauth2/token',

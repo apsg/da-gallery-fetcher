@@ -48,18 +48,45 @@ This is the contents of the published config file:
 
 ```php
 return [
-    'url'  => 'https://backend.deviantart.com/rss.xml',
-    'type' => 'deviation',
-    'sort' => 'time',
-    'q'    => 'by',
+    'username' => env('DA_USERNAME'),
+    'cache'    => true,
+
+    'oauth' => [
+        'token_url' => 'https://www.deviantart.com/oauth2/token',
+        'client_id' => env('DA_CLIENT_ID'),
+        'secret'    => env('DA_SECRET'),
+    ],
 ];
 ```
+
+The `DA_USERNAME` variable is the default name of user you want to fetch the gallery (in most cases: your username).
+
+Other variables (client ID and secret) can be obtained by registering your own OAUTH app here: 
+
+https://www.deviantart.com/developers/apps
 
 ## Usage
 
 ```php
-$da-gallery-fetcher = new Apsg\Dafetcher();
-$collection = $da-gallery-fetcher->fetch('username');
+$dafetcher = new Apsg\Dafetcher();
+$collection = $dafetcher->fetch();
+```
+
+To change user just use fluent syntax:
+
+```php 
+$collection = $dafetcher->forUser('other-user')->fetch();
+```
+
+#### Disable cache
+
+To disable cache permanently just set the config's variable `cache` to false.
+
+To disable temporarily just use helper:
+
+```php 
+$dafetcher = new Apsg\Dafetcher();
+$freshResults = $dafetcher->noCache()->fetch(); 
 ```
 
 ## Testing
