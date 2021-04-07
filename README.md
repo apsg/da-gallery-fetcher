@@ -75,7 +75,9 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Credits
 
 - [Szymon Gackowski](https://github.com/apsg)
-- [All Contributors](../../contributors)
+
+It uses great oauth2 subscriber for guzzle:
+https://github.com/kamermans/guzzle-oauth2-subscriber
 
 ## License
 

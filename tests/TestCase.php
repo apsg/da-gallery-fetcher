@@ -2,8 +2,6 @@
 namespace Apsg\Dafetcher\Tests;
 
 use Apsg\Dafetcher\DafetcherServiceProvider;
-use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -12,8 +10,6 @@ class TestCase extends Orchestra
     public function setUp() : void
     {
         parent::setUp();
-        $this->createApplication();
-        $this->app->bind(ClientInterface::class, Client::class);
 
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'Apsg\\Dafetcher\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
