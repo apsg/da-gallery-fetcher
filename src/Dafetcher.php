@@ -3,7 +3,6 @@ namespace Apsg\Dafetcher;
 
 use Apsg\Dafetcher\DTO\Image;
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
@@ -22,10 +21,8 @@ class Dafetcher
     const CACHE_PREFIX = 'dafetcher';
     const CACHE_TTL = 604800; // 1 week
 
-    /**
-     * @var ClientInterface
-     */
-    protected ClientInterface $client;
+    /** @var Client */
+    protected Client $client;
 
     /** @var string */
     protected $username;
