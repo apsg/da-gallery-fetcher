@@ -3,7 +3,9 @@
     "description": "deviantArt Gallery fetcher",
     "keywords": [
         "apsg",
-        "da-gallery-fetcher"
+        "da-gallery-fetcher",
+        "deviantArt",
+        "gallery"
     ],
     "homepage": "https://github.com/apsg/da-gallery-fetcher",
     "license": "MIT",
@@ -16,13 +18,10 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "ext-simplexml": "*",
-        "ext-xml": "*",
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/contracts": "^8.0",
         "kamermans/guzzle-oauth2-subscriber": "^1.0",
         "laravel/framework": "^8.0",
-        "sabre/xml": "^2.2",
         "spatie/laravel-package-tools": "^1.4.3"
     },
     "require-dev": {
